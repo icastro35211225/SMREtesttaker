@@ -1,0 +1,48 @@
+OUTLINE:  ;2021_08;  CS3853: Computer Architecture: (001) ---> HW_2:  TimeLimit: 180 minutes  ---  Version  1.07
+
+
+
+Total Questions: 15, Total Points:   8.0
+
+1. Main Question
+
+   1.a. (  0.5 pts)
+
+   1.b. (  0.5 pts)
+
+   1.c. (  0.5 pts)
+
+
+2. Main Question
+
+   2.a. (  0.5 pts)
+
+   2.b. (  0.5 pts)
+
+   2.c. (  0.5 pts)
+
+
+3. Main Question
+
+   3.a. (  0.5 pts)
+
+   3.b. (  0.5 pts)
+
+
+4. (  0.5 pts) Main Question
+
+5. (  1.0 pts) Main Question
+
+6. Main Question
+
+   6.a. (  0.5 pts)
+
+   6.b. (  0.5 pts)
+
+   6.c. (  0.5 pts)
+
+   6.d. (  0.5 pts)
+
+
+7. (  0.5 pts) Main Question
+

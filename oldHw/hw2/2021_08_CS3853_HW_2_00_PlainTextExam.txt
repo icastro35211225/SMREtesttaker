@@ -1,0 +1,82 @@
+;2021_08;  CS3853: Computer Architecture: (001) ---> HW_2:  TimeLimit: 180 minutes  ---  Version  1.07
+
+
+
+QUESTIONS:  (15)  Total Points:  (  8.0)
+
+1. <1.5 pts> OR/NOR GATE: 
+
+   1.a. (  0.5 pts) The OR gate can enable/disable a digital signal on one input, forcing the output to be (zero, one) by setting the other input to (zero, one)?
+   a. zero, zero
+   b. zero, one
+   c. one, zero
+   d. one, one
+
+
+   1.b. (  0.5 pts) The logical OR can (clear, set) bits in a destination register (R1) like this:  OR R1,R2
+   a. clear
+   b. set
+
+
+   1.c. (  0.5 pts) The NOR gate can enable/disable a digital signal on one input, forcing the output to be (zero, one) by setting the other input to (zero, one)?
+   a. zero, zero
+   b. zero, one
+   c. one, zero
+   d. one, one
+
+
+
+2. <1.5 pts> AND/NAND GATE: 
+
+   2.a. (  0.5 pts) The AND gate can enable/disable a digital signal on one input, forcing the output to be (zero, one) by setting the other input to (zero, one)?
+   a. zero, zero
+   b. zero, one
+   c. one, zero
+   d. one, one
+
+
+   2.b. (  0.5 pts) The logical AND can (clear, set) bits in a destination register (R1) like this:  AND R1,R2
+   a. clear
+   b. set
+
+
+   2.c. (  0.5 pts) The NAND gate can enable/disable a digital signal by forcing the output to be (zero, one) by setting one of the inputs to (zero, one)?
+   a. zero, zero
+   b. zero, one
+   c. one, zero
+   d. one, one
+
+
+
+3. <1.0 pts> XOR Gate: 
+
+   3.a. (  0.5 pts) The XOR gate can be used to flip bits in a register.  (True, False)
+   a. True
+   b. False
+
+
+   3.b. (  0.5 pts) The XOR gate can be used as a controllable inverter of a digital signal. Set the control input to (zero, one) and the output will be the inverse of the signal input.
+   a. zero
+   b. one
+
+
+
+4. (  0.5 pts) What is the signed range of a 3-bit adder/subtractor? (Format: lo,hi)
+
+
+5. (  1.0 pts) Briefly explain, a couple of sentences max, how to make an adder into a subtractor. Hint: A - B == A + -B
+
+
+6. <2 pts> Given a 4-bit Adder - Flags:  C = Carry Flag, N == Sign Flag, Z = Zero Flag, V = Overflow Flag 
+
+   6.a. (  0.5 pts) Briefly describe what logic gate is required to clear/set the Zero flag on a 4-bit adder.
+
+   6.b. (  0.5 pts) Briefly describe the logic gate needed to clear/set the overflow flag on a 4-bit adder (which bits are input to the gate).
+
+   6.c. (  0.5 pts) Briefly describe the logic gate needed to clear/set the carry flag on a 4-bit adder. Hint: it is not just the carry out of bit #3.
+
+   6.d. (  0.5 pts) Which SUM bit should connect to the sign flag on the 4-bit adder?
+
+
+7. (  0.5 pts) The carry in bit, when set to one, will effect an addition or subtraction?
+
