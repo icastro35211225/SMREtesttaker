@@ -1,9 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#include <sha2.h>
+#include <sys/types.h>
 
 char exmHeader[1024] = "";
 char exmContent[6000] = "";
 unsigned char first64[64];
+unsigned char exmBytes[6000];
 unsigned char keyField[65537];
 unsigned char decryptedHash[32];
 
@@ -37,6 +42,9 @@ void readExmData(){
 	int i;
 	for(i = 0; i < 64; i++){
 		sscanf(&exmContent[i*2], "%02X", &first64[i]);
+	}
+	for(i = 64; i < 2531; i++){
+		sscanf(&exmContent[i*2], "%02X", &exmBytes[i-64]);
 	}
 	printf("First 64 bytes: ");
 	printF64();
@@ -72,7 +80,7 @@ void decryptStage2(unsigned int *stageOneBytes, unsigned char *ciphertext, int c
 				*stageOneBytes = u3 - u1;
 			}
 		}
-		stageOneBytes --;
+		stageOneBytes--;
 	}
 }
 
@@ -109,9 +117,11 @@ int main(int argc, char *argv[]) {
 	readExmData();
 	stage1Bytes = decryptStage1(hwHash);
 	decryptStage2(stage1Bytes, first64, 64);
-	free(stage1Bytes);
 	printf("Printing decrypted bytes!: ");
 	//312E303791660CD41BD4FE159351AB036B7CA3E998602A9FEC70B362CA11E0177FE706E3323032312F31322F31353A3A31313A35393A30302B0000F027ED99F8
 	printF64();
+	decryptStage2(stage1Bytes, exmBytes, 2531);
+	printf("Decrypted? Exm content: %s\n", exmBytes);
+	free(stage1Bytes);
 	return 0;
 }
