@@ -1,7 +1,0 @@
-- decrypt xmc after being taken (and modify values, then reencrypt)
-- patch to bypass time requirement
-- inject code &/or read memory of program in order to dump questions
-- Need to sort out how password check is completed
-
-
-Also have to figure out general process of how the program runs!
