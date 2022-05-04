@@ -6,12 +6,12 @@
 #include <sys/types.h>
 
 char exmHeader[1024] = "";
-char exmContent[50000] = "";
-unsigned char first64[64];
-unsigned char exmBytes[50000];
+char exmContent[80000] = "";
+unsigned char first64[65];
+unsigned char exmBytes[80000];
 unsigned char keyField[65537];
 unsigned char decryptedHash[32];
-int lenContent = 0;
+unsigned int lenContent = 0;
 
 typedef uint8_t HASH;
 
@@ -64,10 +64,10 @@ void readExmData(char *path){
 	fgets(exmHeader, sizeof(exmHeader), exmFile);
 	fgets(tmp, sizeof(tmp), exmFile);
 	fgets(exmContent, sizeof(exmContent), exmFile);
-	lenContent = (strlen(exmContent)-128)/2;
+	lenContent = (((strlen(exmContent))/2));
 	//printf("Header: %s\n\n", exmHeader);
-	//printf("EXM Content: %s\n", exmContent);
-	int i;
+	printf("LENGTH: %d\nEXM Content: %s\n", lenContent, exmContent);
+	unsigned int i;
 	for(i = 0; i < 64; i++){
 		sscanf(&exmContent[i*2], "%02X", &first64[i]);
 	}
@@ -111,7 +111,7 @@ void decryptStage2(unsigned int *stageOneBytes, unsigned char *ciphertext, int c
 }
 
 unsigned int* decryptStage1(HASH* hashP){
-	unsigned int u1 = 0x10001;
+	unsigned int u1 = 0x10001; //len of key file
 	unsigned int *stage1Bytes = 0;
 	unsigned int *hash = (unsigned int *) hashP;
 
@@ -133,7 +133,6 @@ unsigned int* decryptStage1(HASH* hashP){
 		printUint(stage1Bytes[i]);
 		printf("\n");
 	}
-	//puts("Stop here to check hash");
 	return stage1Bytes;
 }
 
@@ -156,13 +155,12 @@ int main(int argc, char *argv[]) {
 	genHash(userHash, argv[2]);
 	printf("Hash of \"%s\": ", argv[2]);
 	printHash(userHash);
-	//unsigned int hwHash[8] = {0xd40c6691, 0x15fed41b, 0x03ab5193, 0xe9a37c6b, 0x9f2a6098, 0x62b370ec, 0x17e011ca, 0xe306e77f};
-	//unsigned int hwHash[8] = {0xdbe75582, 0xcc63df40, 0xf19aef63, 0x91d76ce5, 0x35f64f2f, 0x017dc86b, 0x287b4f8b, 0x4df94137};
-	                        //0x8255e7db, 0x40df63cc, 0x63ef9af1, 0xe56cd791, 0x2f4ff635, 0x6bc87d01, 0x8b4f7b28, 0x3741f94d
 	unsigned int *stage1Bytes = 0;
 	readExmData(argv[1]);
 	stage1Bytes = decryptStage1(userHash);
 	decryptStage2(stage1Bytes, first64, 64);
+	printf("First 64 Bytes: ");
+	printF64();
 	if(compareHash(userHash) == 0){
 		printf("\nFailed to decrypt - wrong password\n");
 		free(stage1Bytes);
